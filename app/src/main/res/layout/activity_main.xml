@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash"
+    tools:context=".MainActivity">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_View"
+        android:layout_width="match_parent"
+        android:layout_height="197dp"
+        android:layout_above="@id/button7"
+        android:layout_marginBottom="46dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+
+        />
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="21dp"
+        android:background="@android:color/holo_green_light"
+        android:text="Stats"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+         />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="21dp"
+        android:layout_marginBottom="16dp"
+        android:text="Activities"
+        android:background="@android:color/holo_green_light"
+        android:textAllCaps="false"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/enterWeightEditText"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_above="@id/recycler_View"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:hint="Indtast vægt"
+
+        />
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/recycler_View"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/holo_green_light"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/actionbarTextViewHomepage"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Homepage"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:textSize="20dp"
+        />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/actionbarTextViewHomepage"
+        android:text="Login"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:background="@android:color/holo_green_light"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/shareButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/actionbarTextViewHomepage"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Share"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:background="@android:color/holo_green_light"
+        />
+
+</RelativeLayout>

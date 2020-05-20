@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Statistics">
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+
+        android:text="Back"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:textAllCaps="false"
+        android:textStyle="bold"/>
+
+
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+
+        android:text="TODO: GRAPH"
+        android:layout_below="@id/statistiscHeader"
+        android:layout_marginTop="16dp"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button11"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"
+        android:layout_marginTop="30dp">
+
+    <TextView
+        android:id="@+id/vegtTextField"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Vægt"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/vegtTextField"
+        android:text="Fede Dyr"
+        android:textAlignment="center"
+        />
+    <TextView
+        android:id="@+id/BMITextField"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vegtTextField"
+        android:text="BMI"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/BMIanswer"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/BMITextField"
+        android:layout_below="@id/vegtTextField"
+        android:text="Fede Dyr"
+        android:textAlignment="center"
+        />
+    <TextView
+        android:id="@+id/activityTextField"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BMITextField"
+        android:text="Sidstakt."
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/activityanswer"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/BMITextField"
+        android:layout_below="@id/BMIanswer"
+        android:text="Fede Dyr"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:id="@+id/startWeightTextField"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activityTextField"
+        android:text="Startvægt"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/startweightanswer"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/activityTextField"
+        android:layout_below="@id/activityanswer"
+        android:text="Fede Dyr"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:id="@+id/StartBMITextField"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/startWeightTextField"
+        android:text="StartBMI"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/startBMIanswer"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/startWeightTextField"
+        android:layout_below="@id/startweightanswer"
+        android:text="Fede Dyr"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:id="@+id/weightlostTextField"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/StartBMITextField"
+        android:text="Vægttab"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/weightlostanswer"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/StartBMITextField"
+        android:layout_below="@id/StartBMITextField"
+        android:text="Fede Dyr"
+        android:textAlignment="center"
+        />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/statistiscHeader"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Stats"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:textSize="20dp"
+        />
+</RelativeLayout>
