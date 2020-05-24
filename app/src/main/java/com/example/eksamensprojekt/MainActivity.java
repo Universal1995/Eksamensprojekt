@@ -10,25 +10,41 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.eksamensprojekt.databasecomp.Activity;
+import com.example.eksamensprojekt.databasecomp.AppDatabase;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
     private ArrayList<String> mActivityNames = new ArrayList<>();
     private ArrayList<String> mWeekdays = new ArrayList<>();
     private RecyclerViewAdapter adapter;
+    protected AppDatabase db;
+    private Activity[] mActivities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        db = AppDatabase.getAppDatabase(this);
+        if(db.activityDao().countActivities() == 0){
+            Activity activity = new Activity();
+            activity.activityName = "sport";
+            activity.weekday = "Onsdag";
+            db.activityDao().insert(activity);
+        }
 
+
+       /* if(db.activityDao().countActivities() != 0) {
+            mActivities = db.activityDao().loadAllUsers();
+        }*/
 
 
         adapter = new RecyclerViewAdapter(mActivityNames,mWeekdays,this);
 
         Button buttonStats = findViewById(R.id.button);
+
 
         buttonStats.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 nextViewActivities(v);
+
             }
         });
 
@@ -95,32 +112,18 @@ public class MainActivity extends AppCompatActivity {
             mActivityNames.clear();
             mWeekdays.clear();
 
-            mActivityNames.add("hahaha");
-            mWeekdays.add("wendsday");
+            mActivities = db.activityDao().loadAllActivities();
 
 
-            mActivityNames.add("hahaha");
-            mWeekdays.add("wendsday");
+            for(int i = 0; i < mActivities.length; i++){
+                mActivityNames.add(mActivities[i].activityName);
+                mWeekdays.add(mActivities[i].weekday);
 
-
-            mActivityNames.add("hahaha");
-            mWeekdays.add("wendsday");
-
-
-            mActivityNames.add("hahaha");
-            mWeekdays.add("wendsday");
-
-
-            mActivityNames.add("hahaha");
-            mWeekdays.add("wendsday");
-
-
-            mActivityNames.add("hahaha");
-            mWeekdays.add("wendsday");
-
-
-            mActivityNames.add("hahaha");
-            mWeekdays.add("wendsday");
+            }/*
+            if(baseActivity.db.activityDao().countActivities() != 0){
+                mActivityNames.add(baseActivity.db.activityDao().getActivity().activityName);
+                mWeekdays.add(baseActivity.db.activityDao().getActivity().weekday);
+            }*/
 
 
 
@@ -134,5 +137,13 @@ public class MainActivity extends AppCompatActivity {
             //load ui
             initRecyclerView();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initTableData();
+        //adapter.notifyDataSetChanged();
+
     }
 }
