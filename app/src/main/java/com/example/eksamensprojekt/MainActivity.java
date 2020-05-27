@@ -16,11 +16,8 @@ import com.example.eksamensprojekt.databasecomp.AppDatabase;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private ArrayList<String> mActivityNames = new ArrayList<>();
-    private ArrayList<String> mWeekdays = new ArrayList<>();
     private RecyclerViewAdapter adapter;
     protected AppDatabase db;
-    private Activity[] mActivities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +33,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-       /* if(db.activityDao().countActivities() != 0) {
-            mActivities = db.activityDao().loadAllUsers();
-        }*/
 
 
-        adapter = new RecyclerViewAdapter(mActivityNames,mWeekdays,this);
+
+        adapter = new RecyclerViewAdapter(this);
 
         Button buttonStats = findViewById(R.id.button);
 
@@ -62,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        initTableData();
+        initRecyclerView();
     }
 
 
@@ -76,17 +71,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void initTableData(){
 
-        mActivityNames.clear();
-        mWeekdays.clear();
-        GetDataFromDatabase getDataFromDatabase = new GetDataFromDatabase();
-        getDataFromDatabase.execute();
-
-        adapter.notifyDataSetChanged();
-
-
-    }
 
 
 
@@ -96,53 +81,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private class GetDataFromDatabase extends AsyncTask<Void, Void, Void> {
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            // start loading icon
-
-        }
-
-        @Override
-        protected Void doInBackground(Void... Voids) {
-
-
-            mActivityNames.clear();
-            mWeekdays.clear();
-
-            mActivities = db.activityDao().loadAllActivities();
-
-
-            for(int i = 0; i < mActivities.length; i++){
-                mActivityNames.add(mActivities[i].activityName);
-                mWeekdays.add(mActivities[i].weekday);
-
-            }/*
-            if(baseActivity.db.activityDao().countActivities() != 0){
-                mActivityNames.add(baseActivity.db.activityDao().getActivity().activityName);
-                mWeekdays.add(baseActivity.db.activityDao().getActivity().weekday);
-            }*/
-
-
-
-            return null;
-
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            //load ui
-            initRecyclerView();
-        }
-    }
 
     @Override
     protected void onResume() {
         super.onResume();
-        initTableData();
+        adapter.resetView();
+
         //adapter.notifyDataSetChanged();
 
     }

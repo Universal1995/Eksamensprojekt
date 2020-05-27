@@ -15,7 +15,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
-                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "activity1-database")
+                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "activity-database")
                             // allow queries on the main thread.
                             // Don't do this on a real app!
                             .allowMainThreadQueries()

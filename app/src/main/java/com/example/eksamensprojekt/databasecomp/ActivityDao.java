@@ -8,20 +8,24 @@ import androidx.room.Update;
 @Dao
 public interface ActivityDao {
 
-    @Query("SELECT * FROM activity1")
+    @Query("SELECT * FROM activity where activityDone = 0")
     public Activity[] loadAllActivities();
 
+    @Query("UPDATE activity SET activityDone = 1 WHERE uid = :uid")
+    int updateActivityDone(int uid);
     @Update
     int update(Activity activity);
 
     @Insert
     void insert(Activity activity);
 
-    @Query("SELECT COUNT(*) from activity1")
+    @Query("SELECT COUNT(*) from activity")
     int countActivities();
 
 
-    @Query("SELECT * FROM activity1 WHERE uid BETWEEN :startDate AND :endDate")
+    @Query("SELECT * FROM activity WHERE uid BETWEEN :startDate AND :endDate")
     public Activity[] loadAllActivitiesBetweenDates(int startDate, int endDate);
+
+
 
 }

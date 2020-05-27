@@ -77,24 +77,9 @@ public class Fragment1 extends Fragment {
         return v;
     }
 
-    public void updateEditText(CharSequence newText){
 
-    }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if(context instanceof Fragment1Listener){
-            listener = (Fragment1Listener) context;
-        } else {
-            throw new RuntimeException(context.toString()+ " must implement fragment1Listener");
-        }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        listener = null;
-    }
+
 
 }
