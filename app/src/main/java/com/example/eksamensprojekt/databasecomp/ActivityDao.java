@@ -7,9 +7,14 @@ import androidx.room.Update;
 
 @Dao
 public interface ActivityDao {
+    @Query("SELECT * FROM activity")
+    public Activity[] loadAllActivities();
 
     @Query("SELECT * FROM activity where activityDone = 0")
-    public Activity[] loadAllActivities();
+    public Activity[] loadAllUndoneActivities();
+
+    @Query("SELECT * FROM activity where activityDone = 1")
+    public Activity[] loadAllDoneActivities();
 
     @Query("UPDATE activity SET activityDone = 1 WHERE uid = :uid")
     int updateActivityDone(int uid);

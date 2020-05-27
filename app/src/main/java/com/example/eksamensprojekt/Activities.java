@@ -20,8 +20,8 @@ public class Activities extends AppCompatActivity implements Fragment1.Fragment1
     private Button buttonNewActivities;
     private Button buttonBack;
 
-    private ArrayList<String> mActivityNames = new ArrayList<>();
-    private ArrayList<String> mWeekdays = new ArrayList<>();
+
+    private activitiesRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +45,7 @@ public class Activities extends AppCompatActivity implements Fragment1.Fragment1
 
 
         initOnClickMethods();
-        initActivityList();
-        int i;
+        initRecyclerView();
     }
 
 
@@ -101,54 +100,18 @@ public class Activities extends AppCompatActivity implements Fragment1.Fragment1
 
 
 
-    private void initActivityList(){
 
-        mActivityNames.add("ddd");
-        mWeekdays.add("Canada");
-
-        mActivityNames.add("ddd");
-        mWeekdays.add("Canada");
-
-        mActivityNames.add("ddd");
-        mWeekdays.add("Canada");
-
-        mActivityNames.add("ddd");
-        mWeekdays.add("Canada");
-
-        mActivityNames.add("ddd");
-        mWeekdays.add("Canada");
-
-        mActivityNames.add("ddd");
-        mWeekdays.add("Canada");
-
-        mActivityNames.add("ddd");
-        mWeekdays.add("Canada");
-
-        mActivityNames.add("ddd");
-        mWeekdays.add("Canada");
-
-        mActivityNames.add("ddd");
-        mWeekdays.add("Canada");
-
-        mActivityNames.add("ddd");
-        mWeekdays.add("Canada");
-
-        mActivityNames.add("ddd");
-        mWeekdays.add("Canada");
-
-        mActivityNames.add("ddd");
-        mWeekdays.add("Canada");
-
-
-
-        initRecyclerView();
-
-    }
 
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.recyclerViewActivities);
-        activitiesRecyclerViewAdapter adapter = new activitiesRecyclerViewAdapter(mActivityNames,mWeekdays,this);
+        adapter = new activitiesRecyclerViewAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.resetView();
     }
 }

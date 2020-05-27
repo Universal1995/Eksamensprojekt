@@ -24,8 +24,7 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<String> mActivityNames = new ArrayList<>();
-    private ArrayList<String> mWeekdays = new ArrayList<>();
+
     private Context mContext;
     private AppDatabase db;
     private Activity[] mActivities;
@@ -42,12 +41,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         getDataFromDatabase.execute();
     }
 
-    public void clear() {
-        int size = mActivityNames.size();
-        mActivityNames.clear();
-        mWeekdays.clear();
-        notifyItemRangeRemoved(0, size);
-    }
+
 
     @NonNull
     @Override
@@ -63,8 +57,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         //Glide.with(mContext).asBitmap().load(mWeekdays.get(position)).into(holder.image);
 
-        holder.textView1.setText(mActivityNames.get(position));
-        holder.textView2.setText(mWeekdays.get(position));
+        holder.textView1.setText(mActivities[position].activityName);
+        holder.textView2.setText(mActivities[position].weekday);
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,9 +102,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick: Clicked on "+mActivityNames.get(position));
+                Log.d(TAG, "onClick: Clicked on "+mActivities[position].activityName);
 
-                Toast.makeText(mContext,mActivityNames.get(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,mActivities[position].activityName, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -118,7 +112,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return mActivityNames.size();
+        return mActivities.length;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -150,17 +144,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         protected Void doInBackground(Void... Voids) {
 
 
-            mActivityNames.clear();
-            mWeekdays.clear();
-
-            mActivities = db.activityDao().loadAllActivities();
 
 
-            for(int i = 0; i < mActivities.length; i++){
-                mActivityNames.add(mActivities[i].activityName);
-                mWeekdays.add(mActivities[i].weekday);
+            mActivities = db.activityDao().loadAllUndoneActivities();
 
-            }
+
+
 
 
 
