@@ -18,130 +18,131 @@
         android:textAllCaps="false"
         android:textStyle="bold"/>
 
+    <RelativeLayout
+        android:id="@+id/GraphConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_below="@id/statistiscHeader">
+        <com.jjoe64.graphview.GraphView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/Graph"/>
+    </RelativeLayout>
 
-
-    <Button
-        android:id="@+id/button11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-
-        android:text="TODO: GRAPH"
-        android:layout_below="@id/statistiscHeader"
-        android:layout_marginTop="16dp"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button11"
-        android:layout_centerHorizontal="true"
-        android:padding="5dp"
-        android:layout_marginTop="30dp">
+        android:layout_above="@id/button9"
 
-    <TextView
-        android:id="@+id/vegtTextField"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:text="Vægt"
-        android:textStyle="bold"/>
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@id/vegtTextField"
-        android:text="Fede Dyr"
-        android:textAlignment="center"
-        />
-    <TextView
-        android:id="@+id/BMITextField"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/vegtTextField"
-        android:text="BMI"
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/BMIanswer"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/BMITextField"
-        android:layout_below="@id/vegtTextField"
-        android:text="Fede Dyr"
-        android:textAlignment="center"
-        />
-    <TextView
-        android:id="@+id/activityTextField"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/BMITextField"
-        android:text="Sidstakt."
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/activityanswer"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/BMITextField"
-        android:layout_below="@id/BMIanswer"
-        android:text="Fede Dyr"
-        android:textAlignment="center"
-        />
+        android:layout_below="@+id/GraphConstraint"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="100dp"
+        android:padding="5dp">
 
-    <TextView
-        android:id="@+id/startWeightTextField"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/activityTextField"
-        android:text="Startvægt"
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/startweightanswer"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/activityTextField"
-        android:layout_below="@id/activityanswer"
-        android:text="Fede Dyr"
-        android:textAlignment="center"
-        />
+        <TextView
+            android:id="@+id/vegtTextField"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="Vægt"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/StartBMITextField"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/startWeightTextField"
-        android:text="StartBMI"
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/startBMIanswer"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/startWeightTextField"
-        android:layout_below="@id/startweightanswer"
-        android:text="Fede Dyr"
-        android:textAlignment="center"
-        />
+        <TextView
+            android:id="@+id/WeightShowCurrent"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/vegtTextField"
+            android:text="Fede Dyr"
+            android:textAlignment="center" />
 
-    <TextView
-        android:id="@+id/weightlostTextField"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/StartBMITextField"
-        android:text="Vægttab"
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/weightlostanswer"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/StartBMITextField"
-        android:layout_below="@id/StartBMITextField"
-        android:text="Fede Dyr"
-        android:textAlignment="center"
-        />
+        <TextView
+            android:id="@+id/BMITextField"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vegtTextField"
+            android:text="BMI"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/BMIanswer"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vegtTextField"
+            android:layout_toRightOf="@id/BMITextField"
+            android:text="Fede Dyr"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/activityTextField"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/BMITextField"
+            android:text="Sidstakt."
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/activityanswer"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/BMIanswer"
+            android:layout_toRightOf="@id/BMITextField"
+            android:text="Fede Dyr"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/startWeightTextField"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activityTextField"
+            android:text="Startvægt"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/startweightanswer"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activityanswer"
+            android:layout_toRightOf="@id/activityTextField"
+            android:text="Fede Dyr"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/StartBMITextField"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/startWeightTextField"
+            android:text="StartBMI"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/startBMIanswer"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/startweightanswer"
+            android:layout_toRightOf="@id/startWeightTextField"
+            android:text="Fede Dyr"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/weightlostTextField"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/StartBMITextField"
+            android:text="Vægttab"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/weightlostanswer"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/StartBMITextField"
+            android:layout_toRightOf="@id/StartBMITextField"
+            android:text="Fede Dyr"
+            android:textAlignment="center" />
 
     </RelativeLayout>
-
 
     <TextView
         android:id="@+id/statistiscHeader"

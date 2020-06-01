@@ -25,11 +25,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = AppDatabase.getAppDatabase(this);
-        if(db.activityDao().countActivities() == 0){
-            Activity activity = new Activity();
+        if(db.userDao().countUsers() == 0){
+            /*Activity activity = new Activity();
             activity.activityName = "sport";
             activity.weekday = "Onsdag";
-            db.activityDao().insert(activity);
+            db.activityDao().insert(activity);*/
+            firstTimeLoginActivity();
         }
 
 
@@ -68,6 +69,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void nextViewActivities(View v){
         Intent intent = new Intent(this, Activities.class);
+        startActivity(intent);
+    }
+
+    public void firstTimeLoginActivity(){
+        Intent intent = new Intent(this, FirstLogin.class);
         startActivity(intent);
     }
 
