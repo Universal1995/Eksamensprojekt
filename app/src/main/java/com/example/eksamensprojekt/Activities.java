@@ -98,10 +98,6 @@ public class Activities extends AppCompatActivity implements Fragment1.Fragment1
         });
     }
 
-
-
-
-
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.recyclerViewActivities);
         adapter = new activitiesRecyclerViewAdapter(this);
