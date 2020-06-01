@@ -42,7 +42,7 @@ public class Statistics extends AppCompatActivity {
         setContentView(R.layout.activity_statistics);
         //Links our Graphview to the XML object
         graph = findViewById(R.id.Graph);
-        dateTextView = findViewById(R.id.startweightanswer);
+        dateTextView = findViewById(R.id.activityanswer);
 
 
         //Layout
