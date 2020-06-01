@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +16,8 @@ import com.example.eksamensprojekt.databasecomp.Activity;
 import com.example.eksamensprojekt.databasecomp.AppDatabase;
 import com.example.eksamensprojekt.databasecomp.Weight;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -24,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText enterWeightEditter;
     private Button enterWeightButton;
     private Weight weight;
-    private Thread thread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,47 +37,35 @@ public class MainActivity extends AppCompatActivity {
 
         db = AppDatabase.getAppDatabase(this);
         if(db.userDao().countUsers() == 0){
-            /*Activity activity = new Activity();
-            activity.activityName = "sport";
-            activity.weekday = "Onsdag";
-            db.activityDao().insert(activity);*/
+
             firstTimeLoginActivity();
         }
+        if(db.userDao().countUsers() == 1 && db.activityDao().countActivities() == 0){
+            nextViewActivities();
+        }
 
-        if(new Date(db.weightDao().getLastWeightDate()) != new Date(new Date().getTime())){
-            enterWeightEditter.setVisibility(View.GONE);
-            enterWeightButton.setVisibility(View.GONE);
-        }
-        else{
-          enterWeightButton.setVisibility(View.VISIBLE);
-          enterWeightEditter.setVisibility(View.VISIBLE);
-        }
+
+
+
+
 
 
 
         enterWeightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (enterWeightEditter.getText().length() != 0 && enterWeightEditter.getText().toString().contains("[a-zA-Z]+") == false) {
-                    weight = new Weight();
-                    weight.weight = Double.parseDouble(String.format("%.2f", enterWeightEditter.getText().toString()));
-                    db.weightDao().insert(weight);
-                    thread = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
+                weight = new Weight();
+                if (!new SimpleDateFormat("dd/MM/yy").format(db.weightDao().getLastWeightDate().date).matches(new SimpleDateFormat("dd/MM/yy").format(new Date().getTime())))  {
+                    if (enterWeightEditter.getText().length() != 0 && enterWeightEditter.getText().toString().matches("\\d+.\\d+") && enterWeightEditter.getText().length() < 7) {
 
-                            try {
-                                thread.sleep(500);
-                            }catch (Exception e){
-                                e.printStackTrace();
-                            }
+                        weight = new Weight();
+                        weight.weight = Double.parseDouble(String.format("%.2f", enterWeightEditter.getText().toString()));
+                        db.weightDao().insert(weight);
 
-                            enterWeightButton.setVisibility(View.GONE);
-                            enterWeightEditter.setVisibility(View.GONE);
-
-                        }
-                    });
-                    thread.start();
+                        Toast.makeText(getApplicationContext(), "shit", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(getApplicationContext(), "Daglige vægt er allerede indtastet", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -92,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         buttonStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nextViewStats(v);
+                nextViewStats();
             }
         });
 
@@ -100,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         buttonActivites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nextViewActivities(v);
+                nextViewActivities();
 
             }
         });
@@ -109,12 +99,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void nextViewStats(View v){
+    public void nextViewStats(){
         Intent intent = new Intent(this, Statistics.class);
         startActivity(intent);
     }
 
-    public void nextViewActivities(View v){
+    public void nextViewActivities(){
         Intent intent = new Intent(this, Activities.class);
         startActivity(intent);
     }
@@ -148,10 +138,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        try {
-            thread.join();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
     }
 }

@@ -57,10 +57,7 @@ public class Statistics extends AppCompatActivity {
             db.weightDao().insert(weight);
             weight.weight = 84.0;
             db.weightDao().insert(weight);
-            User user = new User();
-            user.height = 1.79;
-            user.initWeight = 82.2;
-            db.userDao().insert(user);
+
             mWeights = db.weightDao().loadAllWeights();
             mUser = db.userDao().GetUser();
             mActivity = db.activityDao().loadAllActivities();
