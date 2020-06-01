@@ -16,4 +16,10 @@ public interface WeightDao {
     @Insert
     void insert(Weight weight);
 
+   @Query("SELECT * FROM weight ORDER BY date DESC LIMIT 1")
+    long getLastWeightDate();
+
+
+
+
 }

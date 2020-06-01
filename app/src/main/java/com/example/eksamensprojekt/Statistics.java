@@ -72,7 +72,7 @@ public class Statistics extends AppCompatActivity {
         }
 
 
-        dateTextView.setText(mWeights[0].date);
+        dateTextView.setText(new Date(mWeights[0].date).toString());
 
         initGraf();
         graph.addSeries(series);
@@ -145,7 +145,7 @@ public class Statistics extends AppCompatActivity {
         DataPoint[] dataPoints = new DataPoint[mWeights.length];
 
         for (int i = 0; i < mWeights.length; i++) {
-            dataPoints[i] = new DataPoint(new SimpleDateFormat("dd/MM/yyyy").parse( mWeights[i].date), mWeights[i].weight);
+            dataPoints[i] = new DataPoint(new Date(mWeights[i].date), mWeights[i].weight);
         }
 
         series = new LineGraphSeries<>(dataPoints);

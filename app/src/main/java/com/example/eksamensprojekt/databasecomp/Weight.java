@@ -16,6 +16,6 @@ public class Weight {
     @PrimaryKey(autoGenerate = true)
     public int wId;
     @NonNull
-    public String date = (String) DateFormat.format("dd/MM/yyyy", new Date().getTime());
+    public Long date = new Date().getTime();
     public Double weight;
 }
