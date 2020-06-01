@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.eksamensprojekt.databasecomp.AppDatabase;
-
 import java.util.ArrayList;
 
 public class Activities extends AppCompatActivity implements Fragment1.Fragment1Listener {
@@ -21,7 +19,6 @@ public class Activities extends AppCompatActivity implements Fragment1.Fragment1
     private FrameLayout fragmentRemover;
     private Button buttonNewActivities;
     private Button buttonBack;
-    private AppDatabase db;
 
 
     private activitiesRecyclerViewAdapter adapter;
@@ -34,7 +31,6 @@ public class Activities extends AppCompatActivity implements Fragment1.Fragment1
         buttonNewActivities = findViewById(R.id.button6);
         headerA = findViewById(R.id.headerActivities);
         fragmentRemover = findViewById(R.id.fragmentRemover);
-        db = AppDatabase.getAppDatabase(this);
 
         fragment1 = new Fragment1();
 
@@ -44,10 +40,6 @@ public class Activities extends AppCompatActivity implements Fragment1.Fragment1
                     //.replace(R.id.main_fragment, new WhiteFragment())
                     //.addToBackStack(null)
                     .commit();
-        }
-
-        if(db.activityDao().countActivities() == 0){
-            getSupportFragmentManager().beginTransaction().replace(R.id.container1,fragment1).commit();
         }
 
 
@@ -105,11 +97,6 @@ public class Activities extends AppCompatActivity implements Fragment1.Fragment1
             }
         });
     }
-
-
-
-
-
 
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.recyclerViewActivities);

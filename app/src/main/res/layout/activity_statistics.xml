@@ -37,7 +37,7 @@
 
         android:layout_below="@+id/GraphConstraint"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="20dp"
         android:padding="5dp">
 
         <TextView
@@ -50,7 +50,7 @@
 
         <TextView
             android:id="@+id/WeightShowCurrent"
-            android:layout_width="100dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@id/vegtTextField"
@@ -67,7 +67,7 @@
 
         <TextView
             android:id="@+id/BMIanswer"
-            android:layout_width="100dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/vegtTextField"
             android:layout_toRightOf="@id/BMITextField"
@@ -84,7 +84,7 @@
 
         <TextView
             android:id="@+id/activityanswer"
-            android:layout_width="100dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/BMIanswer"
             android:layout_toRightOf="@id/BMITextField"
@@ -101,7 +101,7 @@
 
         <TextView
             android:id="@+id/startweightanswer"
-            android:layout_width="100dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/activityanswer"
             android:layout_toRightOf="@id/activityTextField"
@@ -118,7 +118,7 @@
 
         <TextView
             android:id="@+id/startBMIanswer"
-            android:layout_width="100dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/startweightanswer"
             android:layout_toRightOf="@id/startWeightTextField"
@@ -135,7 +135,7 @@
 
         <TextView
             android:id="@+id/weightlostanswer"
-            android:layout_width="100dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/StartBMITextField"
             android:layout_toRightOf="@id/StartBMITextField"

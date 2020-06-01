@@ -10,7 +10,6 @@ public interface UserDao {
     @Query("SELECT * FROM user where uid = 1")
     public User GetUser();
 
-
     @Insert
     void insert(User user);
 
