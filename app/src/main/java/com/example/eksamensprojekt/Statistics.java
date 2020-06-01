@@ -94,14 +94,13 @@ public class Statistics extends AppCompatActivity {
 
 
 
-/*
+
         //Buttons and text objects
 
-        //show last activity
-        TextView lastAct = findViewById(R.id.activityanswer);
+
         //shows initial weight
         TextView initWeight = findViewById(R.id.startweightanswer);
-        text = String.valueOf(mUser[mUser.initWeight);
+        text = String.valueOf(mUser.initWeight);
         initWeight.setText(text);
         // shows initial BMI
         TextView initBMI = findViewById(R.id.startBMIanswer);
@@ -109,18 +108,18 @@ public class Statistics extends AppCompatActivity {
         initBMI.setText(text);
         //shows total weight loss from start
         TextView WeightLoss = findViewById(R.id.weightlostanswer);
-        text = String.valueOf(numberFormat.format(mUser.initWeight - mWeights[mWeight.length-1].weight));
+        text = String.valueOf(numberFormat.format(mUser.initWeight - mWeights[mWeights.length-1].weight));
         WeightLoss.setText(text);
         //shows current BMI
         TextView CurrBMI = findViewById(R.id.BMIanswer);
-        text = String.valueOf(numberFormat.format(mWeight[mWeight.length-1].weight / (mUser.height * mUser.height)));
+        text = String.valueOf(numberFormat.format(mWeights[mWeights.length-1].weight / (mUser.height * mUser.height)));
         CurrBMI.setText(text);
         //shows current weight
         TextView currWeight = findViewById(R.id.WeightShowCurrent);
-        text = mWeight[mWeight.length-1].weight.toString();
+        text = mWeights[mWeights.length-1].weight.toString();
         currWeight.setText(text);
 
- */
+
 
         Button buttonBack = findViewById(R.id.button9);
         buttonBack.setOnClickListener(new View.OnClickListener() {
